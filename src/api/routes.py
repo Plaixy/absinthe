@@ -28,7 +28,7 @@ async def imagegen():
         "output_quality": 90,
         "aspect_ratio": "1:1"
     }
-    client = replicate.Client('')
+    client = replicate.Client('PROVIDE_YOUR_KEY')
     output = client.run(
         "black-forest-labs/flux-schnell",
         input=input
