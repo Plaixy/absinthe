@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "absinthe"
+version = "0.1.0"
+description = ""
+authors = ["Frank Wang <fuguevit@gmail.com>"]
+packages = [
+    { include = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.0"
+python-etcd = "^0.4.5"
+quart = "^0.19.6"
+hypercorn = "^0.17.3"
+replicate = "^0.33.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0.0"
+
