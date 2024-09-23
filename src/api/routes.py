@@ -65,7 +65,6 @@ async def llmmodels():
     
 @api_bp.route('/imagegen', methods=['POST'])
 async def imagegen():
-    # prompt case "a sci-fi looking cat with the tomato and lightning, the cat should be in a picture frame, in Disney-style 3D cartoon"
     prompt = request.json.get('prompt')
     if not prompt:
         return jsonify({"error": "The 'prompt' parameter is required"}), 400
