@@ -9,8 +9,8 @@ import yaml
 
 api_bp = Blueprint('api', __name__)
 
-@api_bp.route('/llm-validate', methods=['POST'])
-async def llmValidate():
+@api_bp.route('/mmc-validate', methods=['POST'])
+async def mmcValidate():
     json_data = await request.get_json()
     if json_data is None:
         return jsonify({"error": "No JSON data provided"}), 400
