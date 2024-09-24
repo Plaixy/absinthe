@@ -4,8 +4,11 @@ version = "0.1.0"
 description = ""
 authors = ["Frank Wang <fuguevit@gmail.com>"]
 packages = [
-    { include = "src" }
+    { include = "absinthe", "from" = "." }
 ]
+
+[tool.poetry.scripts]
+start = "absinthe.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -17,6 +20,7 @@ replicate = "^0.33.0"
 etcd3 = "0.12.0"
 pyyaml = "^6.0.2"
 protobuf = "3.20.0"
+python-dotenv = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^8.0.0"

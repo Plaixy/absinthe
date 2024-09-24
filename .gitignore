@@ -5,6 +5,9 @@
 .idea/
 .vscode/
 
+# CONFIG
+*/.env
+
 # Virtual Environment
 .venv/
 
