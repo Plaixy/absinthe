@@ -1,4 +1,5 @@
 from quart import Blueprint, jsonify, request
+from openai import AsyncOpenAI
 
 import etcd3
 import json
@@ -89,3 +90,30 @@ async def imagegen():
         input=input
     )
     return jsonify({"image": str(output)}), 200
+
+@api_bp.route('/translate', methods=['POST'])
+async def imagegen():
+    json_data = await request.get_json()
+    if json_data is None:
+        return jsonify({"error": "No JSON data provided"}), 400
+
+    content = json_data.get('content')
+    if not content:
+        return jsonify({"error": "No content provided"}), 400
+    
+    model = json_data.get('model')
+    if not model:
+        model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+
+    api_key = os.getenv("OPENAI_API_KEY")
+    client = AsyncOpenAI(api_key=api_key)
+    response = await client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": "You are a translator. Translate the given Chinese text to English."},
+            {"role": "user", "content": content}
+        ]
+    )
+    
+    content = response.choices[0].message.content
+    return jsonify({"result": content}), 200
