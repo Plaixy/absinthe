@@ -16,7 +16,7 @@ def create_app():
 async def main():
     app = create_app()
     config = HyperConfig()
-    config.bind = ["127.0.0.1:9339"]
+    config.bind = ["0.0.0.0:9339"]
     config.use_reloader = True
     await serve(app, config)
 
