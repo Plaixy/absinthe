@@ -92,7 +92,7 @@ async def imagegen():
     return jsonify({"image": str(output)}), 200
 
 @api_bp.route('/translate', methods=['POST'])
-async def imagegen():
+async def translate():
     json_data = await request.get_json()
     if json_data is None:
         return jsonify({"error": "No JSON data provided"}), 400
