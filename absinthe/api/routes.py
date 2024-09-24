@@ -11,11 +11,12 @@ api_bp = Blueprint('api', __name__)
 
 @api_bp.route('/llm-validate', methods=['POST'])
 async def llmValidate():
-    if not request.is_json:
-        return jsonify({"error": "Request must be JSON"}), 400
+    json_data = await request.get_json()
+    if json_data is None:
+        return jsonify({"error": "No JSON data provided"}), 400
 
-    data = request.json.get('data')
-    if data is None:
+    data = json_data.get('data')
+    if not data:
         return jsonify({"error": "Missing 'data' field in JSON"}), 400
     try:
         content = json.loads(data)
@@ -68,9 +69,15 @@ async def llmmodels():
     
 @api_bp.route('/imagegen', methods=['POST'])
 async def imagegen():
-    prompt = request.json.get('prompt')
+
+    json_data = await request.get_json()
+    if json_data is None:
+        return jsonify({"error": "No JSON data provided"}), 400
+
+    prompt = json_data.get('prompt')
     if not prompt:
-        return jsonify({"error": "The 'prompt' parameter is required"}), 400
+        return jsonify({"error": "No prompt provided"}), 400
+
     input = {
         "prompt": prompt,
         "output_quality": 90,
