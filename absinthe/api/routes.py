@@ -27,7 +27,7 @@ async def mmcValidate():
     if not isinstance(content, dict):
         return jsonify({"error": "Decoded JSON must be an object"}), 400
     
-    return jsonify({"resul": "ok"}), 200
+    return jsonify({"result": "ok"}), 200
 
 @api_bp.route('/characters', methods=['GET'])
 async def characters():
