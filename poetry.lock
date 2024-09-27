@@ -175,20 +175,6 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
-name = "flask-cors"
-version = "5.0.0"
-description = "A Flask extension adding a decorator for CORS support"
-optional = false
-python-versions = "*"
-files = [
-    {file = "Flask_Cors-5.0.0-py2.py3-none-any.whl", hash = "sha256:b9e307d082a9261c100d8fb0ba909eec6a228ed1b60a8315fd85f783d61910bc"},
-    {file = "flask_cors-5.0.0.tar.gz", hash = "sha256:5aadb4b950c4e93745034594d9f3ea6591f734bb3662e16e255ffbf5e89c88ef"},
-]
-
-[package.dependencies]
-Flask = ">=0.9"
-
-[[package]]
 name = "grpcio"
 version = "1.66.1"
 description = "HTTP/2-based RPC framework"
@@ -916,6 +902,20 @@ docs = ["pydata_sphinx_theme"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "quart-cors"
+version = "0.7.0"
+description = "A Quart extension to provide Cross Origin Resource Sharing, access control, support"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "quart_cors-0.7.0-py3-none-any.whl", hash = "sha256:fa872cc94a2ae6b51a35b028ebca65c14069d7121d63a4caa3526ebbfb7c5a99"},
+    {file = "quart_cors-0.7.0.tar.gz", hash = "sha256:d667a0f13b4ce6d9e926489de5d819780844fbff5b2cdea156bd8867dd426a37"},
+]
+
+[package.dependencies]
+quart = ">=0.15"
+
+[[package]]
 name = "replicate"
 version = "0.33.0"
 description = "Python client for Replicate"
@@ -1076,4 +1076,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "e35d7286bdeeb6f1e538b7d7b3efb352d61856bc0c83a9bbd8680fbf9d7b9c65"
+content-hash = "f6e70c4cffb3c15c58833fabaf4410a62af09ac3ecf47596656fe039d3aa9657"
