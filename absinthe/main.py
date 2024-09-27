@@ -11,7 +11,7 @@ load_dotenv()
 
 def create_app():
     app = Quart(__name__)
-    cors(app, allow_origin="*localhost*") 
+    app = cors(app, allow_origin="*localhost*") 
     app.register_blueprint(api_bp)
     return app
 
