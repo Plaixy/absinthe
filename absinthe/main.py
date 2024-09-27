@@ -11,7 +11,15 @@ load_dotenv()
 
 def create_app():
     app = Quart(__name__)
-    app = cors(app, allow_origin="*localhost*") 
+    app = cors(app, allow_origin=["*localhost*", "tauri://localhost"]) 
+
+    @app.after_request
+    async def add_cors_headers(response):
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Headers'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = '*'
+        return response
+    
     app.register_blueprint(api_bp)
     return app
 
