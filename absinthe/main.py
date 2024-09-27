@@ -3,6 +3,7 @@ from hypercorn.config import Config as HyperConfig
 from hypercorn.asyncio import serve
 from quart import Quart
 from api.routes import api_bp
+from flask_cors import CORS
 
 import asyncio
 
@@ -10,6 +11,7 @@ load_dotenv()
 
 def create_app():
     app = Quart(__name__)
+    CORS(app, resources={r"*": {"origins": ["localhost", "tauri://localhost"]}}) 
     app.register_blueprint(api_bp)
     return app
 
