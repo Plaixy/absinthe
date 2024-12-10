@@ -118,3 +118,26 @@ async def translate():
     
     content = response.choices[0].message.content
     return jsonify({"result": content}), 200
+
+@api_bp.route('/playground', methods=['POST'])
+async def playground():
+    json_data = await request.get_json()
+    if json_data is None:
+        return jsonify({"error": "No JSON data provided"}), 400
+
+    prompt = json_data.get('prompt')
+    if not prompt:
+        return jsonify({"error": "No prompt provided"}), 400
+
+    api_key = os.getenv("OPENAI_API_KEY")
+    client = AsyncOpenAI(api_key=api_key)
+    response = await client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.3
+    )
+    
+    content = response.choices[0].message.content
+    return jsonify({"result": content}), 200
